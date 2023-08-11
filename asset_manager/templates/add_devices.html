@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Asset Tracking App{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Asset Tracking App</h1>
+      <nav>
+        <ul>
+          <li><a href="{% url 'company_list' %}">Company</a></li>
+          <li><a href="{% url 'employees_list' %}">Employees</a></li>
+          <li><a href="{% url 'devices_list' %}">Devices</a></li>
+          <li><a href="{% url 'deviceslogs_list' %}">Devices Logs</a></li>
+          <li><a href="{% url 'add_company' %}">Add Company</a></li>
+          <li><a href="{% url 'add_employees' %}">Add Employees</a></li>
+          <li><a href="{% url 'add_devices' %}">Add Devices</a></li>
+          <li><a href="{% url 'add_deviceslogs' %}">Add Devices Logs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Add Degices</h2>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Add Device</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; {{ year }} Your Company. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

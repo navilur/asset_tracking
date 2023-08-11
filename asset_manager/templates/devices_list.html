@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Asset Tracking App{% endblock %}</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Asset Tracking App</h1>
+      <nav>
+        <ul>
+          <li><a href="{% url 'company_list' %}">Company</a></li>
+          <li><a href="{% url 'employees_list' %}">Employees</a></li>
+          <li><a href="{% url 'devices_list' %}">Devices</a></li>
+          <li><a href="{% url 'deviceslogs_list' %}">Devices Logs</a></li>
+          <li><a href="{% url 'add_company' %}">Add Company</a></li>
+          <li><a href="{% url 'add_employees' %}">Add Employees</a></li>
+          <li><a href="{% url 'add_devices' %}">Add Devices</a></li>
+          <li><a href="{% url 'add_deviceslogs' %}">Add Devices Logs</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Company Name</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Devices Name</th>
+            <th>Divice Serial</th>
+            <th>Condition</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for devices in device %}
+          <tr>
+            <td>{{ devices.name }}</td>
+            <td>{{ devices.divice_serial }}</td>
+            <td>{{ devices.condition }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
