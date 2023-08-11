@@ -1,4 +1,4 @@
 # asset_tracking
 
-user: admin
+user: admin <br/>
 password: 1234
