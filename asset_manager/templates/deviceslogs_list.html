@@ -1,58 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Asset Tracking App{% endblock %}</title>
-  </head>
-
-  <body>
-    <header>
-      <h1>Asset Tracking App</h1>
-      <nav>
-        <ul>
-          <li><a href="{% url 'company_list' %}">Company</a></li>
-          <li><a href="{% url 'employees_list' %}">Employees</a></li>
-          <li><a href="{% url 'devices_list' %}">Devices</a></li>
-          <li><a href="{% url 'deviceslogs_list' %}">Devices Logs</a></li>
-          <li><a href="{% url 'add_company' %}">Add Company</a></li>
-          <li><a href="{% url 'add_employees' %}">Add Employees</a></li>
-          <li><a href="{% url 'add_devices' %}">Add Devices</a></li>
-          <li><a href="{% url 'add_deviceslogs' %}">Add Devices Logs</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <h2>Device Logs List</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Device</th>
-            <th>Employee</th>
-            <th>Company</th>
-            <th>Name</th>
-            <th>Checkout Date</th>
-            <th>Return Date</th>
-            <th>Checkout Condition</th>
-            <th>Return Condition</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for log in device_logs %}
-          <tr>
-            <td>{{ log.device }}</td>
-            <td>{{ log.employee }}</td>
-            <td>{{ log.company }}</td>
-            <td>{{ log.name }}</td>
-            <td>{{ log.checkout_date }}</td>
-            <td>{{ log.return_date }}</td>
-            <td>{{ log.checkout_condition }}</td>
-            <td>{{ log.return_condition }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </main>
-  </body>
-</html>
+{% extends 'base.html' %} {% block title %} Device Log List - Asset Tracking App
+{%endblock %}{% block page_name %} Divice Log List {%endblock%}{%block content%}
+<div class="bg-white shadow-md rounded-lg overflow-x-auto">
+  <table class="w-full table-auto">
+    <thead>
+      <tr class="bg-blue-100">
+        <th class="px-4 py-2">Device</th>
+        <th class="px-4 py-2">Employee</th>
+        <th class="px-4 py-2">Company</th>
+        <th class="px-4 py-2">Checkout Date</th>
+        <th class="px-4 py-2">Return Date</th>
+        <th class="px-4 py-2">Checkout Condition</th>
+        <th class="px-4 py-2">Return Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in device_logs %}
+      <tr>
+        <td class="border px-4 py-2">{{ log.device }}</td>
+        <td class="border px-4 py-2">{{ log.employee }}</td>
+        <td class="border px-4 py-2">{{ log.company }}</td>
+        <td class="border px-4 py-2">{{ log.checkout_date }}</td>
+        <td class="border px-4 py-2">{{ log.return_date }}</td>
+        <td class="border px-4 py-2">{{ log.checkout_condition }}</td>
+        <td class="border px-4 py-2">{{ log.return_condition }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock%}
