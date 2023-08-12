@@ -1,48 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}Asset Tracking App{% endblock %}</title>
-  </head>
-
-  <body>
-    <header>
-      <h1>Asset Tracking App</h1>
-      <nav>
-        <ul>
-          <li><a href="{% url 'company_list' %}">Company</a></li>
-          <li><a href="{% url 'employees_list' %}">Employees</a></li>
-          <li><a href="{% url 'devices_list' %}">Devices</a></li>
-          <li><a href="{% url 'deviceslogs_list' %}">Devices Logs</a></li>
-          <li><a href="{% url 'add_company' %}">Add Company</a></li>
-          <li><a href="{% url 'add_employees' %}">Add Employees</a></li>
-          <li><a href="{% url 'add_devices' %}">Add Devices</a></li>
-          <li><a href="{% url 'add_deviceslogs' %}">Add Devices Logs</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <h2>Company Name</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Company Name</th>
-            <th>Employees Name</th>
-            <th>Employees ID</th
-          </tr>
-        </thead>
-        <tbody>
-          {% for employees in employee %}
-          <tr>
-            <td>{{ employees.company.name }}</td>
-            <td>{{ employees.name }}</td>
-            <td>{{ employees.id }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </main>
-  </body>
-</html>
+{% extends 'base.html' %}{% block title %} Employee List - Asset Tracking App
+{%endblock %}{% block page_name %} Employee List {%endblock %}{%block content %}
+<div class="bg-white shadow-md rounded-lg overflow-x-auto">
+  <table class="w-full table-auto">
+    <thead>
+      <tr class="bg-blue-100">
+        <th class="px-4 py-2">Company Name</th>
+        <th class="px-4 py-2">Employees Name</th>
+        <th class="px-4 py-2">Employees ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employees in employee %}
+      <tr class="text-center">
+        <td class="border px-4 py-2">{{ employees.company.name }}</td>
+        <td class="border px-4 py-2">{{ employees.name }}</td>
+        <td class="border px-4 py-2">{{ employees.id }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{%endblock %}
