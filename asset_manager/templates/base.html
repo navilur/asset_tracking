@@ -1,22 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Asset Tracking App{% endblock %}</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    form p {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    input,
+    select {
+      border: 1px solid grey;
+      margin-bottom: 20px;
+      background: #0008;
+      border-radius: 5px;
+      color: #fff;
+      padding-left: 10px;
+      width: 300px;
+      max-width: 300px;
+    }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Asset Tracking App{% endblock %}</title>
-</head>
-
-<body>
-  <header>
-    <h1>Asset Tracking App</h1>
-    <nav>
-      <ul>
-        <li><a href="{% url 'add_company' %}">Add Company</a></li>
-        <!-- Add other navigation links here -->
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    {% block content %}
+    label {
+      font-size: 1rem;
+      margin-right: 10px;
+      width: 200px;
+      max-width: 200px;
+    }
+  </style>
+  <body class="bg-gray-100">
+    <div class="flex h-screen bg-gray-100">
+      <!-- Sidebar -->
+      <div class="flex-none w-64 px-8 py-4 bg-white border-r border-gray-300">
+        <h1 class="text-2xl font-semibold text-gray-800">Asset Tracking</h1>
+        <ul class="mt-6 space-y-2">
+          <li>
+            <a
+              href="{% url 'company_list' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Companies</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'employees_list' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Employees</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'devices_list' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Devices</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'deviceslogs_list' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Devices Logs</a
+            >
+          </li>
+        </ul>
+        <hr class="mt-6" />
+        <ul class="mt-6 space-y-2">
+          <li>
+            <a
+              href="{% url 'add_company' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Add Companies</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'add_employees' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Add Employees</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'add_devices' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Add Devices</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'add_deviceslogs' %}"
+              class="block px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-200 rounded"
+              >Add Devices Logs</a
+            >
+          </li>
+        </ul>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-grow p-8">
+        <div class="bg-white p-6 mb-6 rounded-lg shadow-md">
+          <h2 class="text-lg font-semibold text-gray-800">
+            {% block page_name %} {%endblock%}
+          </h2>
+        </div>
+        {% block content %} {%endblock%}
+      </div>
+    </div>
+  </body>
+</html>
